@@ -35,7 +35,6 @@ const Home: NextPage = () => {
         Number(totalSupplyParsed) - Number(burnedTokenParsed);
     const marketCap = circulatingSupply * data?.usdPrice!;
 
-    console.log(data?.usdPrice);
     return (
         <div>
             <Head>
