@@ -9,13 +9,16 @@ const Navbar: FC<NavbarProps> = () => {
 
     return (
         <>
-            <header className="p-4 bg-navbar w-full z-20">
-                <div className="w-1/2 flex items-center justify-between">
-                    <button onClick={() => setOpen((prev) => !prev)}>
+            <header className="p-4 bg-navbar z-20 w-full">
+                <div className="flex items-center justify-center">
+                    <button
+                        onClick={() => setOpen((prev) => !prev)}
+                        className="absolute left-4"
+                    >
                         <HiMenuAlt1 className=" text-2xl text-zatcoin-blue-light cursor-pointer" />
                     </button>
                     <Link href="/">
-                        <a>
+                        <a className="">
                             <span className="font-black text-zatcoin-blue-light uppercase tracking-widest ">
                                 Zatcoin
                             </span>

@@ -8,8 +8,12 @@ module.exports = {
             colors: {
                 "zatcoin-blue-light": "#5FBEFF",
                 "zatcoin-blue-btn": "#005278",
+                "zatcoin-blue-dark": "#053D57",
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require("@tailwindcss/forms"),
+        // ...
+    ],
 };
