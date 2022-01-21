@@ -53,7 +53,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
     if (error) return <span>Error</span>;
 
     return (
-        <section className="p-10 w-4/5 mx-auto  mt-5 mb-20">
+        <section className="p-10 mt-5 mb-20">
             <div className="flex items-center mb-5 space-x-2">
                 <HiInformationCircle className="text-lg" />
                 <h4 className="uppercase font-bold">Token Info.</h4>

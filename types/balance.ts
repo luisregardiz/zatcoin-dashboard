@@ -1,0 +1,9 @@
+export type ZatcoinBalance = {
+    token_address: string;
+    name: string;
+    symbol: string;
+    logo?: string | undefined;
+    thumbnail?: string | undefined;
+    decimals: string;
+    balance: string;
+};

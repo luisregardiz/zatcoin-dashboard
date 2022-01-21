@@ -13,12 +13,12 @@ const Navbar: FC<NavbarProps> = () => {
                 <div className="flex items-center justify-center">
                     <button
                         onClick={() => setOpen((prev) => !prev)}
-                        className="absolute left-4"
+                        className="absolute left-4 p-2 hover:bg-gray-900/50 rounded-lg hover:text-zatcoin-blue-light/70 "
                     >
-                        <HiMenuAlt1 className=" text-2xl text-zatcoin-blue-light cursor-pointer" />
+                        <HiMenuAlt1 className=" text-2xl text-zatcoin-blue-light" />
                     </button>
                     <Link href="/">
-                        <a className="">
+                        <a>
                             <span className="font-black text-zatcoin-blue-light uppercase tracking-widest ">
                                 Zatcoin
                             </span>

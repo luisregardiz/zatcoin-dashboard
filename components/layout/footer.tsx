@@ -7,15 +7,15 @@ interface FooterProps {}
 const Footer: FC<FooterProps> = () => {
     const actualYear = new Date().getFullYear();
     return (
-        <footer className="py-4 px-8 bg-gray-900 shadow-footer flex items-center justify-center">
-            <div className="">
+        <footer className="py-4 px-8 bg-gray-900 shadow-footer flex lg:flex-row flex-col-reverse  items-center justify-center">
+            <div className="mt-5 lg:mt-0">
                 <span>
                     Copyright &copy; {actualYear}{" "}
                     <span className="text-zatcoin-blue-light">Zatcoin</span> All
                     rights reserved.
                 </span>
             </div>
-            <div className="absolute right-8">
+            <div className="lg:absolute relative lg:right-8 ">
                 <ul className="flex items-center space-x-4">
                     <li>
                         <a

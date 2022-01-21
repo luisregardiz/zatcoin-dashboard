@@ -5,7 +5,7 @@ interface HeroProps {}
 
 const Hero: FC<HeroProps> = () => {
     return (
-        <div className="w-1/6 mx-auto mt-10">
+        <div className="md:w-1/5 w-1/2 mx-auto mt-10">
             <Image
                 src={ZatcoinLogo}
                 alt="Zatcoin Logo"

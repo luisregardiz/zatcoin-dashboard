@@ -7,7 +7,7 @@
 }
 
 .btn-connect {
-  @apply py-3 px-6 rounded-lg bg-zatcoin-blue-btn font-bold mt-10 shadow-lg shadow-zatcoin-blue-btn/50 hover:bg-zatcoin-blue-dark transition ease-in-out duration-200;
+  @apply py-2 px-4 rounded-lg bg-zatcoin-blue-btn font-bold  shadow-lg shadow-zatcoin-blue-btn/50 hover:bg-zatcoin-blue-dark transition ease-in-out duration-200;
 }
 
 @tailwind utilities;
@@ -37,6 +37,12 @@ body {
 .list-token-info {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.list-user-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
 }
 

@@ -19,7 +19,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, setOpen }) => {
                     transition={{ duration: 0.2 }}
                     exit={{ opacity: 0, x: -100 }}
                     onClick={() => setOpen((prev) => !prev)}
-                    className="absolute h-full w-1/5 left-0 top-0 z-10 mt-14 py-5 px-4 bg-sidebar"
+                    className="absolute h-full md:w-1/4 lg:w-1/5 w-1/2 left-0 top-0 z-10 mt-14 py-5 px-4 bg-sidebar"
                 >
                     <h4 className="mb-5 text-gray-600 uppercase font-extrabold text-sm pl-4">
                         Menu

@@ -30,7 +30,6 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
     });
     const onSubmit: SubmitHandler<UserData> = (data) => console.log(data);
 
-    console.log(user?.get("ethAddress"));
     return (
         <>
             <Head>
@@ -41,9 +40,9 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                 />
                 <meta charSet="utf-8" />
             </Head>
-            <main className="w-3/4 mx-auto">
-                <div className="bg-card flex items-center py-20 px-10 my-10">
-                    <div className="w-1/2 flex items-center justify-center ">
+            <main className="min-h-screen flex flex-col  justify-center max-w-screen-xl mx-auto">
+                <div className="bg-card flex flex-col md:flex-row items-center p-10 my-10 mx-10 gap-5">
+                    <div className="w-1/2 flex items-center justify-center  ">
                         <Image
                             src={ZatcoinLogo}
                             alt="Zatcoin Logo"
@@ -53,14 +52,14 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                             priority
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="md:w-1/2 w-full  md:mt-0 mt-5 ">
                         <h3 className="text-3xl font-bold text-zatcoin-blue-light uppercase tracking-wide mb-2">
                             Register
                         </h3>
                         <span>Create your account at Zatcoin</span>
                         <form
                             onSubmit={handleSubmit(onSubmit)}
-                            className="space-y-4 my-10 w-4/5 flex flex-col"
+                            className="space-y-4 my-10 md:w-4/5 w-full mx-auto md:mx-0 flex flex-col"
                         >
                             <div className="flex flex-col space-y-2 ">
                                 <label htmlFor="username" className="font-bold">
@@ -109,16 +108,16 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                                 />
                             </div>
 
-                            <div className="space-x-4 self-center">
-                                <button type="submit" className="btn-connect">
-                                    Register
-                                </button>
+                            <div className="space-x-4 self-center pt-5">
                                 <button
                                     onClick={() => router.push("/profile")}
                                     type="button"
                                     className="btn-connect bg-red-500 hover:bg-red-600 shadow-red-500/50"
                                 >
                                     Cancel
+                                </button>
+                                <button type="submit" className="btn-connect">
+                                    Register
                                 </button>
                             </div>
                         </form>

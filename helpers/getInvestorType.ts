@@ -30,49 +30,49 @@ export type InvestorType = {
 export const investorType: InvestorType[] = [
     {
         id: "shrimp",
-        title: "You are a Shrimp Investor",
-        description: " Shrimp investor are users who hold less 1,000 ZATCOIN",
+        title: "Shrimp Investor",
+        description: " Shrimp investor are users who hold less 1K ZATCOIN",
     },
     {
         id: "crab",
-        title: "You are a Crab Investor",
+        title: "Crab Investor",
         description:
-            "Crab investors are users who have more than 1,000 ZATCOIN and less than 10,000 ZATCOIN",
+            "Crab investors are users who have more than 1K ZATCOIN and less than 10K ZATCOIN",
     },
     {
         id: "octopus",
-        title: "You are a Octopus Investor",
+        title: "Octopus Investor",
         description:
-            "Octopus investor are users who have more than 10,000 ZATCOIN and less than 100,000 ZATCOIN",
+            "Octopus investor are users who have more than 10K ZATCOIN and less than 100K ZATCOIN",
     },
     {
         id: "fish",
-        title: "You are a Fish Investor",
+        title: "Fish Investor",
         description:
-            "Fish investor are users who have more than 100,000 ZATCOIN and less than 500,000 ZATCOIN",
+            "Fish investor are users who have more than 100K ZATCOIN and less than 500K ZATCOIN",
     },
     {
         id: "dolphin",
-        title: "You are a Dolphin Investor",
+        title: "Dolphin Investor",
         description:
-            "Dolphin investor are users who have more than 500,000 ZATCOIN and less than 1,000,000 ZATCOIN",
+            "Dolphin investor are users who have more than 500K ZATCOIN and less than 1MILL ZATCOIN",
     },
     {
         id: "shark",
-        title: "You are a Shark Investor",
+        title: "Shark Investor",
         description:
-            "Shark investor are users who have more than 1,000,000 ZATCOIN and less than 5,000,000 ZATCOIN",
+            "Shark investor are users who have more than 1MILL ZATCOIN and less than 5MILL ZATCOIN",
     },
     {
         id: "whale",
-        title: "You are a Whale Investor",
+        title: "Whale Investor",
         description:
-            "Whale investor are users who have more than 5,000,000 ZATCOIN and less than 10,000,000 ZATCOIN",
+            "Whale investor are users who have more than 5MILL ZATCOIN and less than 10MILL ZATCOIN",
     },
     {
         id: "humpback",
-        title: "You are a Humpback Investor",
+        title: "Humpback Investor",
         description:
-            "Humpback investor are users who have more than 10,000,000 ZATCOIN",
+            "Humpback investor are users who have more than 10MILL ZATCOIN",
     },
 ];

@@ -14,8 +14,10 @@ const Home: NextPage = () => {
                 />
                 <meta charSet="utf-8" />
             </Head>
-            <Hero />
-            <TokenInformation />
+            <main className="min-h-screen  max-w-screen-xl  mx-auto flex flex-col  justify-center ">
+                <Hero />
+                <TokenInformation />
+            </main>
         </>
     );
 };

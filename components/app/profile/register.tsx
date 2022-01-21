@@ -9,13 +9,13 @@ const RegisterUser: FC<RegisterUserProps> = () => {
     const { logout } = useMoralis();
     const router = useRouter();
     return (
-        <div>
+        <div className="mx-10">
             <div className="flex items-center space-x-2 mb-5">
                 <BiWallet className="text-xl" />
                 <h4 className="uppercase font-bold">Zatcoin</h4>
             </div>
             <div className="flex flex-col items-center justify-center p-10 bg-card ">
-                <h3 className="font-bold text-2xl mb-5">
+                <h3 className="font-bold md:text-2xl text-xl mb-5">
                     This wallet is not registered in Zatcoin yet.
                 </h3>
                 <span>
@@ -30,7 +30,7 @@ const RegisterUser: FC<RegisterUserProps> = () => {
                     </a>
                     of Zatcoin
                 </span>
-                <div className="flex items-center space-x-5 mb-5">
+                <div className="flex flex-col md:flex-row items-center  md:space-x-5 space-x-0 mb-5 mt-10 space-y-5 md:space-y-0">
                     <button
                         onClick={() => router.push("/profile/register")}
                         className="btn-connect"
