@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { HiHome, HiUser } from "react-icons/hi";
+import { useScrollBlock } from "../../hooks/useScrollBlock";
 
 interface SidebarProps {
     isOpen: boolean;
@@ -9,6 +10,10 @@ interface SidebarProps {
 }
 
 const Sidebar: FC<SidebarProps> = ({ isOpen, setOpen }) => {
+    const [blockScroll, allowScroll] = useScrollBlock();
+    useEffect(() => {
+        isOpen ? blockScroll() : allowScroll();
+    }, [allowScroll, blockScroll, isOpen]);
     return (
         <AnimatePresence>
             {isOpen && (

@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import { investorType } from "../../../helpers/getInvestorType";
 import Shirmp from "../../../public/assets/images/investor-icon/50-gray-shrimp.svg";
 import Crab from "../../../public/assets/images/investor-icon/50-gray-crab.svg";
@@ -12,6 +12,7 @@ import ZatcoinLogo from "../../../public/assets/images/zatlogo.svg";
 import { MdOutlineCancel } from "react-icons/md";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { useScrollBlock } from "../../../hooks/useScrollBlock";
 
 interface InvestorTypeInfoProps {
     showModal: boolean;
@@ -22,6 +23,10 @@ const InvestorTypeInfo: FC<InvestorTypeInfoProps> = ({
     showModal,
     setShowModal,
 }) => {
+    const [blockScroll, allowScroll] = useScrollBlock();
+    useEffect(() => {
+        showModal ? blockScroll() : allowScroll();
+    }, [allowScroll, blockScroll, showModal]);
     const getInversorIcon = (id: string) => {
         switch (id) {
             case "shrimp":

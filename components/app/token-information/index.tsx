@@ -49,7 +49,6 @@ const TokenInformation: FC<TokenInformationProps> = () => {
         Number(totalSupplyParsed) - Number(burnedTokenParsed);
     const marketCap = circulatingSupply * data?.usdPrice!;
 
-    if (isLoading || isLoadingData) return <span>Loading...</span>;
     if (error) return <span>Error</span>;
 
     return (
@@ -62,22 +61,38 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 <CardTokenInfo
                     title="Zatcoin Price"
                     icon={<HiTrendingUp className="text-lg" />}
-                    content={`$${data?.usdPrice.toFixed(9)}`}
+                    content={
+                        isLoading
+                            ? "Loading..."
+                            : `$${data?.usdPrice.toFixed(9)}`
+                    }
                 />
                 <CardTokenInfo
                     title="Circulating Supply"
                     icon={<HiChartPie className="text-lg" />}
-                    content={`${parseNumber(circulatingSupply)} ZATCOIN`}
+                    content={
+                        isLoading
+                            ? "Loading..."
+                            : `${parseNumber(circulatingSupply)} ZATCOIN`
+                    }
                 />
                 <CardTokenInfo
                     title="MarketCap"
                     icon={<BsCurrencyDollar className="text-lg" />}
-                    content={`$ ${parseNumber(marketCap)}`}
+                    content={
+                        isLoading
+                            ? "Loading..."
+                            : `$ ${parseNumber(marketCap)}` || 0
+                    }
                 />
                 <CardTokenInfo
                     title="Total Supply"
                     icon={<FaCoins className="text-lg" />}
-                    content={`${parseNumber(totalSupplyParsed)} ZATCOIN`}
+                    content={
+                        isLoading
+                            ? "Loading..."
+                            : `${parseNumber(totalSupplyParsed)} ZATCOIN` || 0
+                    }
                 />
                 <CardTokenInfo
                     title="Holders"
@@ -87,7 +102,11 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 <CardTokenInfo
                     title="Total Burned Tokens"
                     icon={<HiFire className="text-lg" />}
-                    content={`${parseNumber(burnedTokenParsed)} ZATCOIN`}
+                    content={
+                        isLoading
+                            ? "Loading..."
+                            : `${parseNumber(burnedTokenParsed)} ZATCOIN` || 0
+                    }
                 />
             </div>
         </section>

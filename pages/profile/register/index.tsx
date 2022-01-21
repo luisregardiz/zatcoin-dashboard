@@ -2,8 +2,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMoralis } from "react-moralis";
+import RegisterSuccess from "../../../components/app/modal/register-success";
 import ZatcoinLogo from "../../../public/assets/images/zatlogo.svg";
 
 interface RegisterProfileProps {}
@@ -11,12 +13,16 @@ interface RegisterProfileProps {}
 type UserData = {
     username: string;
     email: string;
-    wallet: string;
 };
 
 const RegisterProfile: NextPage<RegisterProfileProps> = () => {
-    const { user } = useMoralis();
+    const { user, setUserData, isUserUpdating, userError } = useMoralis();
+    const [showModal, setShowModal] = useState<boolean>(false);
     const router = useRouter();
+
+    useEffect(() => {
+        user?.get("email") && router.push("/profile");
+    }, [router, user]);
     const {
         register,
         handleSubmit,
@@ -25,10 +31,14 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
         defaultValues: {
             username: "",
             email: "",
-            wallet: user?.get("ethAddress"),
         },
     });
-    const onSubmit: SubmitHandler<UserData> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<UserData> = (data) => {
+        setUserData(data);
+        if (!userError) {
+            setShowModal(true);
+        }
+    };
 
     return (
         <>
@@ -102,7 +112,7 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
 
                                 <input
                                     type="text"
-                                    defaultValue={user?.get("ethAddress")}
+                                    placeholder={user?.get("ethAddress")}
                                     className="bg-gray-900/50 rounded-lg border-0 shadow-lg py-2 disabled:text-gray-600 cursor-not-allowed"
                                     disabled
                                 />
@@ -116,14 +126,24 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                                 >
                                     Cancel
                                 </button>
-                                <button type="submit" className="btn-connect">
-                                    Register
+                                <button
+                                    type="submit"
+                                    className="btn-connect "
+                                    disabled={isUserUpdating && true}
+                                >
+                                    {isUserUpdating
+                                        ? "Registering..."
+                                        : "Register"}
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </main>
+            <RegisterSuccess
+                showModal={showModal}
+                setShowModal={setShowModal}
+            />
         </>
     );
 };

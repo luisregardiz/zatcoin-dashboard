@@ -28,6 +28,35 @@ body {
   color: #f9fafb;
 }
 
+body::-webkit-scrollbar  {
+  width: 8px;     
+  height: 8px;    
+  display: block;  
+}
+body::-webkit-scrollbar-thumb{
+  background:#1f2937;
+  border-radius: 6px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+  background: #1f2937be;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.219);
+}
+
+body::-webkit-scrollbar-thumb:active {
+  background-color: #1f2937be
+  ;
+}
+body::-webkit-scrollbar-track{
+  background: transparent;
+  border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track:hover,
+body::-webkit-scrollbar-track:active{
+background: transparent;
+}
+
 .bg-navbar {
   background: linear-gradient(90.18deg, rgba(30, 41, 59, 0.6) 2.9%, rgba(35, 71, 97, 0.3) 100.54%);
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);

@@ -1,13 +1,25 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import toast from "react-hot-toast";
 import { BiWallet } from "react-icons/bi";
 import { useMoralis } from "react-moralis";
-import RegisterUser from "./register";
 
 interface ConnectProfileProps {}
 
 const ConnectProfile: FC<ConnectProfileProps> = () => {
-    const { isAuthenticating, authenticate } = useMoralis();
+    const { isAuthenticating, authenticate, authError } = useMoralis();
 
+    useEffect(() => {
+        if (authError) {
+            toast.error(authError.message, {
+                style: {
+                    backgroundColor: "#053D57",
+                    fontWeight: "600",
+                    color: "#f9fafb",
+                    padding: "1rem",
+                },
+            });
+        }
+    }, [authError]);
     return (
         <div className="mx-10">
             <div className="flex items-center space-x-2 mb-5">
