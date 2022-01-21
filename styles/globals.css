@@ -22,7 +22,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  background: url("../public/assets/images/zatcoin-bg-dark.png") no-repeat center center fixed;
+  background: url(../public/assets/images/zatcoin-bg-dark.png) no-repeat center center fixed;
   background-size: cover;
   background-color: var(--bg-gray) ;
   color: #f9fafb;
