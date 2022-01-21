@@ -15,12 +15,14 @@ import { getCirculatingSupply } from "../../../helpers/getCirculatingSupply";
 import { parseBalance } from "../../../helpers/parseBalance";
 import { parseNumber } from "../../../helpers/parseNumber";
 import CardTokenInfo from "./card";
+import { getTokenData } from "../../../helpers/getTokenData";
 
 interface TokenInformationProps {}
 
 const TokenInformation: FC<TokenInformationProps> = () => {
     const [totalSupply, setTotalSupply] = useState<string>("");
     const [burnedToken, setBurnedToken] = useState<string>("");
+	const [holders, setHolders] = useState<number>(0);
     const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
     const { data, error, isLoading } = useTokenPrice({
         address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
@@ -40,6 +42,11 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 setIsLoadingData(false);
             }
         });
+
+		getTokenData().then((data) => {
+			setHolders(data.holders);
+		});
+
     }, []);
 
     const totalSupplyParsed = Number(parseBalance(totalSupply, "7"));
@@ -97,7 +104,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 <CardTokenInfo
                     title="Holders"
                     icon={<HiUsers className="text-lg" />}
-                    content="+2,000"
+                    content={holders}
                 />
                 <CardTokenInfo
                     title="Total Burned Tokens"
