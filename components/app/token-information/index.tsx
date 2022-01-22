@@ -41,6 +41,8 @@ const TokenInformation: FC<TokenInformationProps> = () => {
 
     if (error) return <span>Error</span>;
 
+    
+
     return (
         <section className="p-10 mt-5 mb-20">
             <div className="flex items-center mb-5 space-x-2">
@@ -63,7 +65,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${circulatingSupply} ZATCOIN`
+                            : `${parseNumber(Number(circulatingSupply).toFixed(4))} ZATCOIN`
                     }
                 />
                 <CardTokenInfo
@@ -72,7 +74,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `$ ${marketCap}` || 0
+                            : `$ ${parseNumber(Number(marketCap))}` || 0
                     }
                 />
                 <CardTokenInfo
@@ -81,13 +83,13 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${totalSupply} ZATCOIN` || 0
+                            : `${parseNumber(Number(totalSupply))} ZATCOIN` || 0
                     }
                 />
                 <CardTokenInfo
                     title="Holders"
                     icon={<HiUsers className="text-lg" />}
-                    content={holders > 0 ? holders : "+2,000"}
+                    content={holders > 0 ? parseNumber(Number(holders)) : "+2,000"}
                 />
                 <CardTokenInfo
                     title="Total Burned Tokens"
@@ -95,7 +97,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${burnedToken} ZATCOIN` || 0
+                            : `${parseNumber(Number(burnedToken))} ZATCOIN` || 0
                     }
                 />
             </div>
