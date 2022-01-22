@@ -4,8 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useMoralis } from "react-moralis";
 import RegisterSuccess from "../../../components/app/modal/register-success";
+import { getUserData } from "../../../helpers/getUserData";
+import { registerUser } from "../../../helpers/registerUser";
 import ZatcoinLogo from "../../../public/assets/images/zatlogo.svg";
 
 interface RegisterProfileProps {}
@@ -13,6 +16,8 @@ interface RegisterProfileProps {}
 type UserData = {
     username: string;
     email: string;
+    password: string;
+    walletAddress: string;
 };
 
 const RegisterProfile: NextPage<RegisterProfileProps> = () => {
@@ -21,8 +26,13 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
     const router = useRouter();
 
     useEffect(() => {
-        user?.get("email") && router.push("/profile");
+        if (user) {
+            getUserData(user.get("ethAddress")).then(() =>
+                router.push("/profile")
+            );
+        }
     }, [router, user]);
+
     const {
         register,
         handleSubmit,
@@ -31,13 +41,22 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
         defaultValues: {
             username: "",
             email: "",
+            walletAddress: user?.get("ethAddress"),
         },
     });
     const onSubmit: SubmitHandler<UserData> = (data) => {
-        setUserData(data);
-        if (!userError) {
-            setShowModal(true);
-        }
+        registerUser(
+            data.username,
+            data.email,
+            data.password,
+            data.walletAddress
+        )
+            .then((res) => {
+                setShowModal(true);
+            })
+            .catch((error) => {
+                toast.error(error);
+            });
     };
 
     return (
@@ -106,6 +125,24 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                                 />
                             </div>
                             <div className="flex flex-col space-y-2">
+                                <label htmlFor="password" className="font-bold">
+                                    Password*
+                                </label>
+                                {errors.password && (
+                                    <span className="text-red-500 text-sm">
+                                        Password is required.
+                                    </span>
+                                )}
+                                <input
+                                    type="password"
+                                    {...register("password", {
+                                        required: true,
+                                    })}
+                                    className="bg-gray-900/50 rounded-lg border-0 shadow-lg py-2"
+                                    placeholder="Enter your Password"
+                                />
+                            </div>
+                            <div className="flex flex-col space-y-2">
                                 <label htmlFor="wallet" className="font-bold">
                                     Wallet Address*
                                 </label>
@@ -113,6 +150,7 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
                                 <input
                                     type="text"
                                     placeholder={user?.get("ethAddress")}
+                                    defaultValue={user?.get("ethAddress")}
                                     className="bg-gray-900/50 rounded-lg border-0 shadow-lg py-2 disabled:text-gray-600 cursor-not-allowed"
                                     disabled
                                 />

@@ -98,10 +98,10 @@ const InvestorTypeInfo: FC<InvestorTypeInfoProps> = ({
                                         />
                                     </div>
                                     <div className="flex flex-col">
-                                        <h5 className="font-bold text-sm mb-1 text-gray-400">
+                                        <h5 className="font-bold md:text-sm text-xs mb-1 text-gray-400">
                                             {type.title}
                                         </h5>
-                                        <span className="text-sm">
+                                        <span className="md:text-sm text-xs ">
                                             {type.description}
                                         </span>
                                     </div>

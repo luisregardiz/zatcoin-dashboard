@@ -25,10 +25,6 @@ const WalletBalance: FC<WalletBalanceProps> = ({ balance }) => {
         BNBBalance && Number(bnbBalance(BNBBalance.balance!, "18")).toFixed(4);
     const zatcoinBalace = Number(balance).toFixed(4);
 
-    const userStatus = user?.get("email")
-        ? "Registered Account"
-        : "Not Registered";
-
     return (
         <div className=" mt-10">
             <div className="flex items-center space-x-2 mb-5">
@@ -69,7 +65,7 @@ const WalletBalance: FC<WalletBalanceProps> = ({ balance }) => {
                 />
                 <CardTokenInfo
                     title="Zatcoin Status"
-                    content={userStatus}
+                    content="Registered Account"
                     icon={<HiIdentification className="text-lg" />}
                 />
             </div>
