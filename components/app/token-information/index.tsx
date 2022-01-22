@@ -103,7 +103,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 <CardTokenInfo
                     title="Holders"
                     icon={<HiUsers className="text-lg" />}
-                    content="+2,000"
+                    content={holders}
                 />
                 <CardTokenInfo
                     title="Total Burned Tokens"
