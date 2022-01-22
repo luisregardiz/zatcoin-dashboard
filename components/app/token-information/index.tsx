@@ -32,16 +32,14 @@ const TokenInformation: FC<TokenInformationProps> = () => {
         setIsLoadingData(true);
         getTokenData().then((data) => {
             setHolders(data.holders);
-            setBurnedToken(data.burned)
-            setTotalSupply(data.supply)
-            setCirculatingSupply(data.circulating_supply)
-            setMarketCap(data.market_cap)
+            setBurnedToken(data.burned);
+            setTotalSupply(data.supply);
+            setCirculatingSupply(data.circulating_supply);
+            setMarketCap(data.market_cap);
         });
     }, []);
 
     if (error) return <span>Error</span>;
-
-    
 
     return (
         <section className="p-10 mt-5 mb-20">
@@ -65,7 +63,9 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${parseNumber(Number(circulatingSupply).toFixed(4))} ZATCOIN`
+                            : `${parseNumber(
+                                  Number(Number(circulatingSupply).toFixed(4))
+                              )} ZATCOIN`
                     }
                 />
                 <CardTokenInfo
@@ -89,7 +89,9 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                 <CardTokenInfo
                     title="Holders"
                     icon={<HiUsers className="text-lg" />}
-                    content={holders > 0 ? parseNumber(Number(holders)) : "+2,000"}
+                    content={
+                        holders > 0 ? parseNumber(Number(holders)) : "+2,000"
+                    }
                 />
                 <CardTokenInfo
                     title="Total Burned Tokens"
