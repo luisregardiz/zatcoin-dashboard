@@ -1,7 +1,4 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { FC } from "react";
-import ZatcoinLogo from "../../../public/assets/images/zatlogo.svg";
 interface ZatcoinSpinnerProps {}
 
 const ZatcoinSpinner: FC<ZatcoinSpinnerProps> = () => {
