@@ -13,6 +13,7 @@ import Shirmp from "../../../../public/assets/images/investor/Shirmp.svg";
 import Whale from "../../../../public/assets/images/investor/Whale.svg";
 import ZatcoinLogo from "../../../../public/assets/images/zatlogo.svg";
 import InvestorTypeInfo from "../../modal/investor-info";
+import ZatcoinSpinner from "../../spinner";
 
 interface WalletInvestorProps {
     id: string;

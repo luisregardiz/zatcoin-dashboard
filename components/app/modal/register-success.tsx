@@ -16,7 +16,7 @@ const RegisterSuccess: FC<RegisterSuccessProps> = ({
 }) => {
     const [blockScroll, allowScroll] = useScrollBlock();
     const router = useRouter();
-    const { refetchUserData } = useMoralis();
+
     useEffect(() => {
         showModal ? blockScroll() : allowScroll();
     }, [allowScroll, blockScroll, showModal]);
@@ -56,7 +56,6 @@ const RegisterSuccess: FC<RegisterSuccessProps> = ({
                         <button
                             onClick={() => {
                                 setShowModal((prev) => !prev);
-                                refetchUserData();
                                 router.push("/profile");
                             }}
                             className="btn-connect bg-green-500 hover:bg-green-600 shadow-green-500/40 mt-5"
