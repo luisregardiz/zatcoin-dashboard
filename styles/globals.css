@@ -117,7 +117,7 @@ background: transparent;
 
 #linear-circle{
     
-        animation: circle 12s linear infinite;
+        animation: circle 24s linear infinite;
         transform-origin: center;
         transform-box: fill-box;
         

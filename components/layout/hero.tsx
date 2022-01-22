@@ -11,6 +11,7 @@ const Hero: FC<HeroProps> = () => {
                 height="241"
                 viewBox="0 0 241 241"
                 fill="none"
+                className="relative md:right-1 right-5"
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <g clipPath="url(#clip0_461_1365)">

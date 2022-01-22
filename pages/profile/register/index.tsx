@@ -51,8 +51,7 @@ const RegisterProfile: NextPage<RegisterProfileProps> = () => {
             data.password,
             data.walletAddress
         )
-            .then(() => {
-                toast.success("User registered successfully");
+            .then((res) => {
                 setShowModal(true);
             })
             .catch((error) => {
