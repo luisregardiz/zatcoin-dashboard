@@ -10,8 +10,6 @@ import {
 import { BsCurrencyDollar } from "react-icons/bs";
 import { FaCoins } from "react-icons/fa";
 import { useTokenPrice } from "react-moralis";
-import { getBurnedToken } from "../../../helpers/getBurnedToken";
-import { getCirculatingSupply } from "../../../helpers/getCirculatingSupply";
 import { parseBalance } from "../../../helpers/parseBalance";
 import { parseNumber } from "../../../helpers/parseNumber";
 import CardTokenInfo from "./card";
@@ -22,6 +20,8 @@ interface TokenInformationProps {}
 const TokenInformation: FC<TokenInformationProps> = () => {
     const [totalSupply, setTotalSupply] = useState<string>("");
     const [burnedToken, setBurnedToken] = useState<string>("");
+    const [circulatingSupply, setCirculatingSupply] = useState<string>("");
+    const [marketCap, setMarketCap] = useState<string>("");
     const [holders, setHolders] = useState<number>(0);
     const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
     const { data, error, isLoading } = useTokenPrice({
@@ -30,30 +30,14 @@ const TokenInformation: FC<TokenInformationProps> = () => {
     });
     useEffect(() => {
         setIsLoadingData(true);
-        getCirculatingSupply().then((data) => {
-            if (data.message === "OK") {
-                setTotalSupply(data.result);
-                setIsLoadingData(false);
-            }
-        });
-        getBurnedToken().then((data) => {
-            if (data.message === "OK") {
-                setBurnedToken(data.result);
-                setIsLoadingData(false);
-            }
-        });
-
         getTokenData().then((data) => {
             setHolders(data.holders);
+            setBurnedToken(data.burned)
+            setTotalSupply(data.supply)
+            setCirculatingSupply(data.circulating_supply)
+            setMarketCap(data.market_cap)
         });
     }, []);
-
-    const totalSupplyParsed = Number(parseBalance(totalSupply, "7"));
-    const burnedTokenParsed = Number(parseBalance(burnedToken, "7"));
-
-    const circulatingSupply =
-        Number(totalSupplyParsed) - Number(burnedTokenParsed);
-    const marketCap = circulatingSupply * data?.usdPrice!;
 
     if (error) return <span>Error</span>;
 
@@ -79,7 +63,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${parseNumber(circulatingSupply)} ZATCOIN`
+                            : `${circulatingSupply} ZATCOIN`
                     }
                 />
                 <CardTokenInfo
@@ -88,7 +72,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `$ ${parseNumber(marketCap)}` || 0
+                            : `$ ${marketCap}` || 0
                     }
                 />
                 <CardTokenInfo
@@ -97,13 +81,13 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${parseNumber(totalSupplyParsed)} ZATCOIN` || 0
+                            : `${totalSupply} ZATCOIN` || 0
                     }
                 />
                 <CardTokenInfo
                     title="Holders"
                     icon={<HiUsers className="text-lg" />}
-                    content={holders}
+                    content={holders > 0 ? holders : "+2,000"}
                 />
                 <CardTokenInfo
                     title="Total Burned Tokens"
@@ -111,7 +95,7 @@ const TokenInformation: FC<TokenInformationProps> = () => {
                     content={
                         isLoading
                             ? "Loading..."
-                            : `${parseNumber(burnedTokenParsed)} ZATCOIN` || 0
+                            : `${burnedToken} ZATCOIN` || 0
                     }
                 />
             </div>
