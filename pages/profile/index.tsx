@@ -11,7 +11,6 @@ import WalletInvestor from "../../components/app/profile/wallet/investor";
 import ZatcoinSpinner from "../../components/app/spinner";
 import { getUserData } from "../../helpers/getUserData";
 import { useInvestor } from "../../hooks/useInvestor";
-import { useZatcoinBalance } from "../../hooks/useZatcoinBalance";
 
 interface ProfileProps {}
 
